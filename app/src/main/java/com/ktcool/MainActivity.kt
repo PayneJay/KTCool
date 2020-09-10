@@ -1,9 +1,7 @@
 package com.ktcool
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -11,7 +9,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var liveData: MutableLiveData<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,43 +26,5 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        liveData = MutableLiveData()
-        liveData.observe(this, {
-            Log.d("leather", "value = $it, 当前LifeCycle的状态为 ${lifecycle.currentState}")
-        })
-
-        liveData.value = "onCreate"
-
-//        startActivity(Intent(this, SecondActivity::class.java))
-    }
-
-    override fun onStart() {
-        super.onStart()
-        liveData.value = "onStart"
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        liveData.value = "onRestart"
-    }
-
-    override fun onResume() {
-        super.onResume()
-        liveData.value = "onResume"
-    }
-
-    override fun onPause() {
-        super.onPause()
-        liveData.value = "onPause"
-    }
-
-    override fun onStop() {
-        super.onStop()
-        liveData.value = "onStop"
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        liveData.value = "onDestroy"
     }
 }

@@ -53,7 +53,6 @@ class DashboardFragment : Fragment() {
                 recyclerView?.adapter?.notifyDataSetChanged()
                 refreshLayout.finishLoadMore(2000)
             }
-            .autoLoadMore()
 
         //设置recyclerView的配置
         recyclerView?.itemAnimator = DefaultItemAnimator()

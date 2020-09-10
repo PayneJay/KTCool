@@ -1,2 +1,8 @@
+include ':bus_notification'
+include ':bus_dashboard'
+include ':bus_home'
+include ':common'
+include ':bus_search'
+include ':bus_login'
 include ':app'
 rootProject.name = "KTCool"

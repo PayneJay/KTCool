@@ -1,0 +1,29 @@
+if (rootProject.ext.moduleLogin) {
+    apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
+}
+apply from: rootDir.absolutePath + '/build_properties/modules.gradle'
+
+android {
+    defaultConfig {
+        if (!rootProject.ext.moduleLogin) {
+            applicationId rootProject.ext.android.applicationId
+        }
+    }
+
+    sourceSets {
+        main {
+            if (rootProject.ext.moduleLogin) {
+                manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                java {
+                    //排除java/debug文件夹下的所有文件
+                    exclude '*module'
+                }
+            }
+        }
+    }
+}
+
