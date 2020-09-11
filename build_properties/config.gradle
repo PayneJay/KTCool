@@ -3,7 +3,7 @@ ext {
     moduleLogin = true       //true:作为Lib组件存在，false:作为application存在(其他module同理)
     moduleHome = true
     moduleDashboard = true
-    moduleNotification = true
+    moduleMine = true
     moduleSearch = true
 
     android = [
@@ -31,10 +31,9 @@ ext {
             navigation_ui_ktx       : 'androidx.navigation:navigation-ui-ktx:2.3.0',
             annotation              : 'androidx.annotation:annotation:1.1.0',
 
-            //三方库
+            //*********************** 三方库 **************************************//
             // debugImplementation because LeakCanary should only run in debug builds.
-            // debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
-            leakcanary              : 'com.squareup.leakcanary:leakcanary-android:1.5.4',
+            leakcanary              : 'com.squareup.leakcanary:leakcanary-android:2.4',
             //下拉刷新上拉加载
             refresh_layout_kernel   : 'com.scwang.smart:refresh-layout-kernel:2.0.1',   //核心必须依赖
             refresh_header_classics : 'com.scwang.smart:refresh-header-classics:2.0.1',    //经典刷新头

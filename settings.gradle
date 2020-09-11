@@ -1,8 +1,8 @@
-include ':bus_notification'
-include ':bus_dashboard'
-include ':bus_home'
+include ':module_mine'
+include ':module_dashboard'
+include ':module_home'
 include ':common'
-include ':bus_search'
-include ':bus_login'
+include ':module_search'
+include ':module_login'
 include ':app'
 rootProject.name = "KTCool"

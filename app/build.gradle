@@ -53,16 +53,14 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     if (!rootProject.ext.isModule) {
-        implementation project(path: ':bus_dashboard')
-        implementation project(path: ':bus_home')
-        implementation project(path: ':bus_login')
-        implementation project(path: ':bus_notification')
-        implementation project(path: ':bus_search')
+        implementation project(path: ':module_dashboard')
+        implementation project(path: ':module_home')
+        implementation project(path: ':module_login')
+        implementation project(path: ':module_mine')
+        implementation project(path: ':module_search')
     }
 
-    //三方库
-    // debugImplementation because LeakCanary should only run in debug builds.
-//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
+    /********************************** 三方库 **************************************/
     debugImplementation rootProject.ext.dependencies.leakcanary
     //下拉刷新上拉加载
     implementation rootProject.ext.dependencies.refresh_layout_kernel       //核心必须依赖
@@ -73,4 +71,6 @@ dependencies {
     implementation rootProject.ext.dependencies.refresh_header_two_level    //二级刷新头
     implementation rootProject.ext.dependencies.refresh_footer_ball         //球脉冲加载
     implementation rootProject.ext.dependencies.refresh_footer_classics     //经典加载
+
+
 }

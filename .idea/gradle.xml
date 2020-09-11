@@ -12,12 +12,12 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/bus_dashboard" />
-            <option value="$PROJECT_DIR$/bus_home" />
-            <option value="$PROJECT_DIR$/bus_login" />
-            <option value="$PROJECT_DIR$/bus_notification" />
-            <option value="$PROJECT_DIR$/bus_search" />
             <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/module_dashboard" />
+            <option value="$PROJECT_DIR$/module_home" />
+            <option value="$PROJECT_DIR$/module_login" />
+            <option value="$PROJECT_DIR$/module_mine" />
+            <option value="$PROJECT_DIR$/module_search" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
