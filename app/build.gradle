@@ -1,21 +1,10 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply from: rootDir.absolutePath + '/build_properties/modules.gradle'
 
 android {
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
         applicationId rootProject.ext.android.applicationId
-        minSdkVersion rootProject.ext.android.minSdkVersion
-        targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode rootProject.ext.android.versionCode
-        versionName rootProject.ext.android.versionName
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        multiDexEnabled true
     }
 
     buildTypes {
@@ -35,22 +24,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation rootProject.ext.dependencies.kotlin_version
-    implementation rootProject.ext.dependencies.core_ktx
-    implementation rootProject.ext.dependencies.appcompat
-    implementation rootProject.ext.dependencies.material
-    implementation rootProject.ext.dependencies.constraint_layout
     implementation rootProject.ext.dependencies.vector_drawable
     implementation rootProject.ext.dependencies.navigation_fragment
     implementation rootProject.ext.dependencies.navigation_ui
-    implementation rootProject.ext.dependencies.lifecycle_extensions
     implementation rootProject.ext.dependencies.navigation_fragment_ktx
     implementation rootProject.ext.dependencies.navigation_ui_ktx
-    implementation project(path: ':common')
-
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     if (!rootProject.ext.isModule) {
         implementation project(path: ':module_dashboard')
