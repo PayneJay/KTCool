@@ -10,6 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.ktcool.R
 import com.ktcool.common.router.ERouter
+import com.ktcool.common.router.MyRouter
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
@@ -28,13 +30,14 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView?.text = it
         })
+        btn_jump?.setOnClickListener {
+            MyRouter.getInstance()
+                .withString("String", "Hello World!")
+                .withInt("Integer", 24)
+                .withBool("Boolean", true)
+                .navigation("/app/secondActivity")
+        }
         return root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        textView?.setOnClickListener {
-            ERouter.instance?.navigation("/app/secondActivity", null)
-        }
-    }
 }

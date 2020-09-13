@@ -20,12 +20,12 @@ class ERouter private constructor() {
             val classes =
                 ClassUtils.getFileNameByPackageName(it, PACKAGE_NAME)
 
-            if (classes.isNotEmpty()) {
+            if (classes?.isNotEmpty()!!) {
                 for (classStr in classes) {
-                    val classConstructor = Class.forName(classStr).getConstructor()
-                    val newInstance = classConstructor.newInstance()
-                    if (newInstance is IRouter) {
-                        newInstance.loadInto()
+                    val clazz = Class.forName(classStr)
+                    val any = clazz.newInstance()
+                    if (any is IRouter) {
+                        any.loadInto()
                     }
                 }
             }

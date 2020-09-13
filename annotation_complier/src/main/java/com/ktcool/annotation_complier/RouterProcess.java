@@ -24,18 +24,17 @@ import javax.tools.JavaFileObject;
 
 @AutoService(Processor.class)//这个注解是用来注册
 public class RouterProcess extends AbstractProcessor {
+    private static final String CREATE_CLASS_NAME = "RouterUtil";
+    private static final String CREATE_PACKAGE_NAME = "com.ktcool.common.router.util";
     //存储路由地址和对应Element的映射表
     private Map<String, TypeElement> routerMap = new HashMap<>();
     //用来创建文件
     private Filer filer;
-    //用来打印日志
-    private Messager messager;
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnvironment) {
         super.init(processingEnvironment);
         filer = processingEnvironment.getFiler();
-        messager = processingEnvironment.getMessager();
     }
 
     @Override
@@ -65,19 +64,6 @@ public class RouterProcess extends AbstractProcessor {
             return;
         }
 
-        /*
-         * package com.ktcool.common.router.util;
-         *
-         * import com.ktcool.common.router.ERouter;
-         * import com.ktcool.common.router.IRouter;
-         *
-         * public class ActivityUtil implements IRouter {
-         *     @Override
-         *     public void loadInto() {
-         *         ERouter.Companion.getInstance().addRouter("path", this.getClass());
-         *     }
-         * }
-         */
         Writer writer = null;
         Set<Map.Entry<String, TypeElement>> entrySet = routerMap.entrySet();
         for (Map.Entry<String, TypeElement> elementEntry : entrySet) {
@@ -90,21 +76,20 @@ public class RouterProcess extends AbstractProcessor {
                 //获取包名
                 String packageName = packageElement.getQualifiedName().toString();
                 //由完整的包名+类名再拼接$MyRouter构成要生成文件的类名
-                String className = typeElement.getQualifiedName() + "$MyRouter";
+                String className = typeElement.getSimpleName() + "$MyRouter";
                 try {
                     JavaFileObject sourceFile = filer.createSourceFile(className);
                     writer = sourceFile.openWriter();
                     //开始写入
-                    StringBuilder builder = new StringBuilder();
-                    builder.append("package ").append(packageName).append(";\n");
-                    builder.append("import ").append("com.ktcool.common.router.ERouter").append(";\n");
-                    builder.append("import ").append("com.ktcool.common.router.IRouter").append(";\n");
-                    builder.append("public class ").append(className).append("implements IRouter {").append("\n");
-                    builder.append("@Override").append("\n");
-                    builder.append("public void loadInto() {").append("\n");
-                    builder.append("ERouter.Companion.getInstance().addRouter(").append(key).append(", ").append(typeElement.getSuperclass()).append(");\n");
-                    builder.append("}\n}\n");
-                    writer.write(builder.toString());
+                    String builder = "package " + packageName + ";\n\n" +
+                            "import " + "com.ktcool.common.router.ERouter" + ";\n" +
+                            "import " + "com.ktcool.common.router.IRouter" + ";\n\n" +
+                            "public class " + className + " implements IRouter {" + "\n" +
+                            "    @Override" + "\n" +
+                            "    public void loadInto() {" + "\n" +
+                            "        ERouter.Companion.getInstance().addRouter(\"" + key + "\", " + typeElement.getSimpleName().toString() + ".class" + ");\n" +
+                            "    }\n}\n";
+                    writer.write(builder);
                 } catch (IOException e) {
                     e.printStackTrace();
                 } finally {

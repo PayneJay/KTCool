@@ -1,85 +1,63 @@
 package com.ktcool.common.router
 
-import android.app.Application
 import android.content.Context
-import android.content.pm.PackageManager
-import android.os.Build
-import android.text.TextUtils
+import dalvik.system.BaseDexClassLoader
 import dalvik.system.DexFile
-import java.io.IOException
+import java.lang.reflect.Field
 import java.util.*
-import java.util.concurrent.CountDownLatch
-import java.util.concurrent.ScheduledThreadPoolExecutor
-import java.util.concurrent.ThreadPoolExecutor
 
 object ClassUtils {
-    /**
-     * 获得程序所有的apk(instant run会产生很多split apk)
-     *
-     * @param context
-     * @return
-     * @throws PackageManager.NameNotFoundException
-     */
-    @Throws(PackageManager.NameNotFoundException::class)
-    private fun getSourcePaths(context: Context): List<String> {
-        val applicationInfo = context.packageManager.getApplicationInfo(context.packageName, 0)
-        val sourcePaths: MutableList<String> = ArrayList()
-        sourcePaths.add(applicationInfo.sourceDir)
-        //instant run
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            if (null != applicationInfo.splitSourceDirs) {
-                sourcePaths.addAll(Arrays.asList(*applicationInfo.splitSourceDirs))
+    //经过BaseDexClassLoader反射获取app全部的DexFile
+    private fun getDexFiles(context: Context): List<DexFile> {
+        val dexFiles: MutableList<DexFile> = ArrayList()
+        val loader = context.classLoader as BaseDexClassLoader
+        try {
+            val pathListField = field("dalvik.system.BaseDexClassLoader", "pathList")
+            val list = pathListField[loader]
+            val dexElementsField = field("dalvik.system.DexPathList", "dexElements")
+            val dexElements = dexElementsField[list] as Array<*>
+            val dexFilefield = field("dalvik.system.DexPathList\$Element", "dexFile")
+            for (dex in dexElements) {
+                val dexFile = dexFilefield[dex] as DexFile
+                dexFiles.add(dexFile)
             }
+        } catch (e: ClassNotFoundException) {
+            e.printStackTrace()
+        } catch (e: NoSuchFieldException) {
+            e.printStackTrace()
+        } catch (e: IllegalAccessException) {
+            e.printStackTrace()
         }
-        return sourcePaths
+        return dexFiles
+    }
+
+    @Throws(ClassNotFoundException::class, NoSuchFieldException::class)
+    private fun field(clazz: String, fieldName: String): Field {
+        val cls = Class.forName(clazz)
+        val field = cls.getDeclaredField(fieldName)
+        field.isAccessible = true
+        return field
     }
 
     /**
-     * 得到路由表的类名
+     * 经过指定包名，扫描包下面包含的全部的ClassName
      *
-     * @param context
-     * @param packageName
-     * @return
-     * @throws PackageManager.NameNotFoundException
-     * @throws InterruptedException
+     * @param context     U know
+     * @param packageName 包名
+     * @return 全部class的集合
      */
-    @Throws(PackageManager.NameNotFoundException::class, InterruptedException::class)
-    fun getFileNameByPackageName(context: Application, packageName: String?): Set<String> {
+    fun getFileNameByPackageName(context: Context, packageName: String?): Set<String>? {
         val classNames: MutableSet<String> = HashSet()
-        val paths = getSourcePaths(context)
-        //使用同步计数器判断均处理完成
-        val countDownLatch = CountDownLatch(paths.size)
-        val threadPoolExecutor: ThreadPoolExecutor = ScheduledThreadPoolExecutor(paths.size)
-        for (path in paths) {
-            threadPoolExecutor.execute {
-                var dexFile: DexFile? = null
-                try {
-                    //加载 apk中的dex 并遍历 获得所有包名为 {packageName} 的类
-                    dexFile = DexFile(path)
-                    val dexEntries = dexFile.entries()
-                    while (dexEntries.hasMoreElements()) {
-                        val className = dexEntries.nextElement()
-                        if (!TextUtils.isEmpty(className) && className.startsWith(packageName!!)) {
-                            classNames.add(className)
-                        }
-                    }
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                } finally {
-                    if (null != dexFile) {
-                        try {
-                            dexFile.close()
-                        } catch (e: IOException) {
-                            e.printStackTrace()
-                        }
-                    }
-                    //释放一个
-                    countDownLatch.countDown()
+        val dexFiles = getDexFiles(context)
+        for (dexfile in dexFiles) {
+            val dexEntries = dexfile.entries()
+            while (dexEntries.hasMoreElements()) {
+                val className = dexEntries.nextElement()
+                if (className.startsWith(packageName!!)) {
+                    classNames.add(className)
                 }
             }
         }
-        //等待执行完成
-        countDownLatch.await()
         return classNames
     }
 }

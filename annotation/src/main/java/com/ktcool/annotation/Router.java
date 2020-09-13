@@ -17,5 +17,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.CLASS)
 public @interface Router {
     //路由地址
-    String path();
+    String path() default "";
 }
