@@ -1,4 +1,4 @@
-package com.ktcool.common.router.util
+package com.ktcool.common.router
 
 import android.app.Application
 import android.content.Context

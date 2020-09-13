@@ -19,11 +19,11 @@ android {
 
         multiDexEnabled true
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
-            }
-        }
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                arguments = [moduleName: project.getName()]
+//            }
+//        }
 
     }
 
@@ -44,10 +44,10 @@ dependencies {
     implementation rootProject.ext.dependencies.constraint_layout
     implementation rootProject.ext.dependencies.lifecycle_extensions
     implementation rootProject.ext.dependencies.annotation
+    implementation project(path: ':annotation')
+    annotationProcessor project(path: ':annotation_complier')
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
-    implementation project(path: ':common')
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }

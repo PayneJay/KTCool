@@ -34,7 +34,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         textView?.setOnClickListener {
-            ERouter.instance?.navigation("/app/second", null)
+            ERouter.instance?.navigation("/app/secondActivity", null)
         }
     }
 }

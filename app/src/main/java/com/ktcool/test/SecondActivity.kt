@@ -2,7 +2,9 @@ package com.ktcool.test
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.ktcool.annotation.Router
 
+@Router(path = "/app/secondActivity")
 class SecondActivity : AppCompatActivity() {
     private val C.length: Int
         get() {

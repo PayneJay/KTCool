@@ -1,10 +1,8 @@
 package com.ktcool.common.router
 
 import android.app.Application
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.ktcool.common.router.util.ClassUtils
 import java.util.*
 
 class ERouter private constructor() {
@@ -24,8 +22,8 @@ class ERouter private constructor() {
 
             if (classes.isNotEmpty()) {
                 for (classStr in classes) {
-                    val className = Class.forName(classStr)
-                    val newInstance = className.newInstance()
+                    val classConstructor = Class.forName(classStr).getConstructor()
+                    val newInstance = classConstructor.newInstance()
                     if (newInstance is IRouter) {
                         newInstance.loadInto()
                     }
@@ -40,8 +38,8 @@ class ERouter private constructor() {
      * @param key   路由地址
      * @param value 对应的类
      */
-    fun addRouter(key: String, value: Class<*>) {
-        if (!routerMap.containsKey(key)) {
+    fun addRouter(key: String?, value: Class<*>) {
+        if (!routerMap.containsKey(key) && !key.isNullOrEmpty()) {
             routerMap[key] = value
         }
     }
@@ -63,7 +61,7 @@ class ERouter private constructor() {
     }
 
     companion object {
-        private const val PACKAGE_NAME: String = "com.ktcool.test"
+        private const val PACKAGE_NAME: String = "com.ktcool"
 
         @Volatile
         var instance: ERouter? = null

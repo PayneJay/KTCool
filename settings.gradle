@@ -1,3 +1,5 @@
+include ':annotation_complier'
+include ':annotation'
 include ':module_mine'
 include ':module_dashboard'
 include ':module_home'
