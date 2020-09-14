@@ -12,7 +12,6 @@ import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Filer;
-import javax.annotation.processing.Messager;
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
@@ -82,12 +81,12 @@ public class RouterProcess extends AbstractProcessor {
                     writer = sourceFile.openWriter();
                     //开始写入
                     String builder = "package " + packageName + ";\n\n" +
-                            "import " + "com.ktcool.common.router.ERouter" + ";\n" +
+                            "import " + "com.ktcool.common.router.MyRouter" + ";\n" +
                             "import " + "com.ktcool.common.router.IRouter" + ";\n\n" +
                             "public class " + className + " implements IRouter {" + "\n" +
                             "    @Override" + "\n" +
                             "    public void loadInto() {" + "\n" +
-                            "        ERouter.Companion.getInstance().addRouter(\"" + key + "\", " + typeElement.getSimpleName().toString() + ".class" + ");\n" +
+                            "        MyRouter.getInstance().addRouter(\"" + key + "\", " + typeElement.getSimpleName().toString() + ".class" + ");\n" +
                             "    }\n}\n";
                     writer.write(builder);
                 } catch (IOException e) {

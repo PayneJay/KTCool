@@ -1,6 +1,7 @@
 /**
- * 子模块通用gradle配置
+ * 公共库通用gradle配置
  */
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
@@ -45,8 +46,6 @@ dependencies {
     implementation rootProject.ext.dependencies.constraint_layout
     implementation rootProject.ext.dependencies.lifecycle_extensions
     implementation rootProject.ext.dependencies.annotation
-
-    implementation project(path: ':common')
     implementation project(path: ':annotation')
     annotationProcessor project(path: ':annotation_complier')
     kapt project(path: ':annotation_complier')

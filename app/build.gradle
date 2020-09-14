@@ -29,7 +29,6 @@ dependencies {
     implementation rootProject.ext.dependencies.navigation_ui
     implementation rootProject.ext.dependencies.navigation_fragment_ktx
     implementation rootProject.ext.dependencies.navigation_ui_ktx
-    implementation project(path: ':common')
 
     if (!rootProject.ext.isModule) {
         implementation project(path: ':module_dashboard')

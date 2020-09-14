@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ktcool.R
+import com.ktcool.common.router.MyRouter
 
 class DashboardAdapter(data: MutableList<DashboardItemBean>) :
     RecyclerView.Adapter<DashboardAdapter.DashboardVH>() {
@@ -18,6 +19,9 @@ class DashboardAdapter(data: MutableList<DashboardItemBean>) :
 
     override fun onBindViewHolder(holder: DashboardVH, position: Int) {
         holder.tvDesc.text = mData[position].desc
+        holder.tvDesc.setOnClickListener {
+            MyRouter.getInstance().navigation("/app/testActivity")
+        }
     }
 
     override fun getItemCount(): Int = mData.size - 1

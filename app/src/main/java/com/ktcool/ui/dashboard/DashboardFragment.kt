@@ -65,6 +65,7 @@ class DashboardFragment : Fragment() {
         )
         data = MutableList(20) { i -> DashboardItemBean("这个是第${i}个条目", "") }
         recyclerView?.adapter = DashboardAdapter(data)
+
     }
 
 }

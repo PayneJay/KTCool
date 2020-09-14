@@ -14,9 +14,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.ktcool.annotation.Router
 
 import com.ktcool.bus_login.R
 
+@Router(path = "/module_login/loginActivity")
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel

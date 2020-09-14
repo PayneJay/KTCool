@@ -1,4 +1,4 @@
-package com.ktcool.ui.notifications
+package com.ktcool.ui.mine
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,25 +9,30 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.ktcool.R
 import com.ktcool.common.router.MyRouter
-import kotlinx.android.synthetic.main.fragment_notifications.*
+import kotlinx.android.synthetic.main.fragment_mine.*
 
-class NotificationsFragment : Fragment() {
+class MineFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: NotificationsViewModel
+    private lateinit var mineViewModel: MineViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
-            ViewModelProvider.NewInstanceFactory().create(NotificationsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_notifications, container, false)
+        mineViewModel =
+            ViewModelProvider.NewInstanceFactory().create(MineViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_mine, container, false)
         val textView: TextView = root.findViewById(R.id.text_notifications)
         textView.text = "点击测试"
-        btn_jump?.setOnClickListener {
-            MyRouter.getInstance().navigation("/app/thirdActivity")
-        }
         return root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        text_notifications.setOnClickListener {
+            MyRouter.getInstance().navigation("/app/thirdActivity")
+        }
+    }
+
 }
