@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.ktcool.R
+import com.ktcool.common.constant.RouterMap
 import com.ktcool.common.router.MyRouter
 import kotlinx.android.synthetic.main.fragment_mine.*
 
@@ -31,7 +32,7 @@ class MineFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         text_notifications.setOnClickListener {
-            MyRouter.getInstance().navigation("/app/thirdActivity")
+            MyRouter.getInstance().navigation(RouterMap.THIRD_ACTIVITY)
         }
     }
 

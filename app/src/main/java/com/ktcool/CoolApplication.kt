@@ -2,9 +2,11 @@ package com.ktcool
 
 import android.app.Application
 import android.content.Context
-import com.ktcool.common.router.ERouter
+import com.ktcool.common.http.HttpPoxy
+import com.ktcool.common.http.OKHttpMode
 import com.ktcool.common.router.MyRouter
 import com.ktcool.test.MyPrint
+
 
 class CoolApplication : Application() {
 
@@ -12,6 +14,7 @@ class CoolApplication : Application() {
         super.onCreate()
         MyPrint.print("CoolApplication onCreate")
         MyRouter.getInstance().init(this)
+        HttpPoxy.getInstance().init(OKHttpMode.getInstance())
     }
 
     override fun attachBaseContext(base: Context?) {

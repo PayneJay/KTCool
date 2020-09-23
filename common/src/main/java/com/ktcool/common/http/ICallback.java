@@ -3,7 +3,7 @@ package com.ktcool.common.http;
 /**
  * 回调接口
  */
-public interface ICallback<T extends BaseBean> {
+public interface ICallback<T> {
     /**
      * 成功回调
      */

@@ -17,8 +17,9 @@ import android.widget.Toast
 import com.ktcool.annotation.Router
 
 import com.ktcool.bus_login.R
+import com.ktcool.common.constant.RouterMap
 
-@Router(path = "/module_login/loginActivity")
+@Router(path = RouterMap.LOGIN_ACTIVITY)
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel

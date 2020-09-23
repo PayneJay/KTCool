@@ -4,8 +4,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.ktcool.annotation.Router
+import com.ktcool.common.constant.RouterMap
 
-@Router(path = "/app/secondActivity")
+@Router(path = RouterMap.SECOND_ACTIVITY)
 class SecondActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

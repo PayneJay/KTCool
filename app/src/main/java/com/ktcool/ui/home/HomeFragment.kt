@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.ktcool.R
+import com.ktcool.common.constant.RouterMap
 import com.ktcool.common.router.MyRouter
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -37,7 +38,7 @@ class HomeFragment : Fragment() {
                 .withString("String", "Hello World!")
                 .withInt("Integer", 24)
                 .withBool("Boolean", true)
-                .navigation("/app/secondActivity")
+                .navigation(RouterMap.SECOND_ACTIVITY)
         }
         return root
     }
@@ -45,7 +46,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         text_home.setOnClickListener {
-            MyRouter.getInstance().navigation("/module_login/loginActivity")
+            MyRouter.getInstance().navigation(RouterMap.LOGIN_ACTIVITY)
         }
     }
 
