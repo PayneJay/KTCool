@@ -50,6 +50,10 @@ dependencies {
     annotationProcessor project(path: ':annotation_complier')
     kapt project(path: ':annotation_complier')
 
+    //okHttp
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
+    implementation 'com.alibaba:fastjson:1.2.48'
+
 //    testImplementation 'junit:junit:4.12'
 //    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
 //    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
