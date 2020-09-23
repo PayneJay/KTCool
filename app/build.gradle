@@ -37,18 +37,4 @@ dependencies {
         implementation project(path: ':module_mine')
         implementation project(path: ':module_search')
     }
-
-    /********************************** 三方库 **************************************/
-    debugImplementation rootProject.ext.dependencies.leakcanary
-    //下拉刷新上拉加载
-    implementation rootProject.ext.dependencies.refresh_layout_kernel       //核心必须依赖
-    implementation rootProject.ext.dependencies.refresh_header_classics     //经典刷新头
-    implementation rootProject.ext.dependencies.refresh_header_radar        //雷达刷新头
-    implementation rootProject.ext.dependencies.refresh_header_falsify      //虚拟刷新头
-    implementation rootProject.ext.dependencies.refresh_header_material     //谷歌刷新头
-    implementation rootProject.ext.dependencies.refresh_header_two_level    //二级刷新头
-    implementation rootProject.ext.dependencies.refresh_footer_ball         //球脉冲加载
-    implementation rootProject.ext.dependencies.refresh_footer_classics     //经典加载
-
-
 }

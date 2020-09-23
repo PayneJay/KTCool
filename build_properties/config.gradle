@@ -34,7 +34,7 @@ ext {
             //*********************** 三方库 **************************************//
             // debugImplementation because LeakCanary should only run in debug builds.
             leakcanary              : 'com.squareup.leakcanary:leakcanary-android:2.4',
-            //下拉刷新上拉加载
+            //**********************下拉刷新上拉加载 start **************************//
             refresh_layout_kernel   : 'com.scwang.smart:refresh-layout-kernel:2.0.1',   //核心必须依赖
             refresh_header_classics : 'com.scwang.smart:refresh-header-classics:2.0.1',    //经典刷新头
             refresh_header_radar    : 'com.scwang.smart:refresh-header-radar:2.0.1',       //雷达刷新头
@@ -43,6 +43,9 @@ ext {
             refresh_header_two_level: 'com.scwang.smart:refresh-header-two-level:2.0.1',   //二级刷新头
             refresh_footer_ball     : 'com.scwang.smart:refresh-footer-ball:2.0.1',      //球脉冲加载
             refresh_footer_classics : 'com.scwang.smart:refresh-footer-classics:2.0.1',    //经典加载
+            //**********************下拉刷新上拉加载 end **************************//
+            okhttp                  : 'com.squareup.okhttp3:okhttp:4.9.0',
+            fastjson                : 'com.alibaba:fastjson:1.2.48',
     ]
 
 }

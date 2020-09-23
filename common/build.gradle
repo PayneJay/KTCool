@@ -1,1 +1,2 @@
-apply from: rootDir.absolutePath + '/build_properties/libs.gradle'
+apply plugin: 'com.android.library'
+apply from: rootDir.absolutePath + '/build_properties/common.gradle'
