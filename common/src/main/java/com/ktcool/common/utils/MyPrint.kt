@@ -1,4 +1,4 @@
-package com.ktcool.test
+package com.ktcool.common.utils
 
 class MyPrint {
     companion object {

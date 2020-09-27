@@ -1,5 +1,7 @@
 package com.ktcool.test
 
+import com.ktcool.common.utils.MyPrint
+
 data class ClazzA(override var prop: Int = 20) : MyInterface {
     override fun method1() {
         val list = listOf("a", "abc", "def")

@@ -1,5 +1,7 @@
 package com.ktcool.test
 
+import com.ktcool.common.utils.MyPrint
+
 interface MyInterface {
     val prop: Int
     val propStr: String

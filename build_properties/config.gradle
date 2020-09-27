@@ -44,7 +44,9 @@ ext {
             refresh_footer_ball     : 'com.scwang.smart:refresh-footer-ball:2.0.1',      //球脉冲加载
             refresh_footer_classics : 'com.scwang.smart:refresh-footer-classics:2.0.1',    //经典加载
             //**********************下拉刷新上拉加载 end **************************//
+            retrofit                : 'com.squareup.retrofit2:retrofit:2.9.0',
             okhttp                  : 'com.squareup.okhttp3:okhttp:4.9.0',
+            converter_gson          : 'com.squareup.retrofit2:converter-gson:2.1.0',
             fastjson                : 'com.alibaba:fastjson:1.2.48',
     ]
 

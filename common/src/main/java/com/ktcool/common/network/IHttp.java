@@ -1,4 +1,4 @@
-package com.ktcool.common.http;
+package com.ktcool.common.network;
 
 import java.util.Map;
 

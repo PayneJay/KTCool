@@ -1,6 +1,6 @@
-package com.ktcool.test;
+package com.ktcool.module_dashboard.bean;
 
-import com.ktcool.common.http.BaseBean;
+import com.ktcool.common.network.BaseBean;
 
 import java.util.List;
 

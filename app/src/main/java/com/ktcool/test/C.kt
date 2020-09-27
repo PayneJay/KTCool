@@ -1,5 +1,7 @@
 package com.ktcool.test
 
+import com.ktcool.common.utils.MyPrint
+
 class C : InterfaceA {
 
     var name: String = "null"

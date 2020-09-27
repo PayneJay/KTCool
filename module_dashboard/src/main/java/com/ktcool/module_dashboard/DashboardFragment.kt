@@ -39,6 +39,7 @@ class DashboardFragment : Fragment() {
         refreshLayout.setRefreshHeader(ClassicsHeader(activity))
             .setRefreshFooter(ClassicsFooter(activity))
             .setOnRefreshListener {
+                dashboardViewModel.requestServer()
                 refreshLayout.finishRefresh(2000)
             }.setOnLoadMoreListener {
                 val size = data.size

@@ -60,7 +60,9 @@ dependencies {
     implementation rootProject.ext.dependencies.refresh_header_two_level    //二级刷新头
     implementation rootProject.ext.dependencies.refresh_footer_ball         //球脉冲加载
     implementation rootProject.ext.dependencies.refresh_footer_classics     //经典加载
-    //okHttp
+    //retrofit、okHttp
+    implementation rootProject.ext.dependencies.retrofit
     implementation rootProject.ext.dependencies.okhttp
+    implementation rootProject.ext.dependencies.converter_gson
     implementation rootProject.ext.dependencies.fastjson
 }

@@ -8,8 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.ktcool.R;
 import com.ktcool.annotation.Router;
 import com.ktcool.common.constant.RouterMap;
-import com.ktcool.common.http.HttpPoxy;
-import com.ktcool.common.http.ICallback;
+import com.ktcool.common.network.HttpPoxy;
+import com.ktcool.common.network.ICallback;
+import com.ktcool.common.utils.MyPrint;
+import com.ktcool.module_dashboard.bean.TestBean;
 
 @Router(path = RouterMap.TEST_ACTIVITY)
 public class TestActivity extends AppCompatActivity {
