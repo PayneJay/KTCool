@@ -4,50 +4,16 @@
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply from: rootDir.absolutePath + '/build_properties/lib.gradle'
 
-
-android {
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
-
-    defaultConfig {
-        minSdkVersion rootProject.ext.android.minSdkVersion
-        targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode rootProject.ext.android.versionCode
-        versionName rootProject.ext.android.versionName
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        multiDexEnabled true
-
-//        javaCompileOptions {
-//            annotationProcessorOptions {
-//                arguments = [moduleName: project.getName()]
-//            }
-//        }
-
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-}
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation rootProject.ext.dependencies.kotlin_version
-    implementation rootProject.ext.dependencies.core_ktx
-    implementation rootProject.ext.dependencies.appcompat
-    implementation rootProject.ext.dependencies.material
-    implementation rootProject.ext.dependencies.constraint_layout
-    implementation rootProject.ext.dependencies.lifecycle_extensions
-    implementation rootProject.ext.dependencies.annotation
+    //以下三个主要是自定义路由框架使用
     implementation project(path: ':annotation')
     annotationProcessor project(path: ':annotation_complier')
     kapt project(path: ':annotation_complier')
+    //权限申请框架
+//    implementation project(path: ':lib_permission')
 
     /********************************** 三方库 **************************************/
     debugImplementation rootProject.ext.dependencies.leakcanary
