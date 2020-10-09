@@ -1,7 +1,10 @@
 /**
  * 子模块通用gradle配置
  */
+apply plugin: 'android-aspectjx'
 apply from: rootDir.absolutePath + '/build_properties/common.gradle'
 dependencies {
     implementation project(path: ':common')
+    //权限申请框架
+    implementation project(path: ':lib_permission')
 }

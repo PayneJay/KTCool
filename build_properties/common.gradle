@@ -1,9 +1,6 @@
 /**
  * 公共库通用gradle配置
  */
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 apply from: rootDir.absolutePath + '/build_properties/lib.gradle'
 
 
@@ -12,8 +9,6 @@ dependencies {
     implementation project(path: ':annotation')
     annotationProcessor project(path: ':annotation_complier')
     kapt project(path: ':annotation_complier')
-    //权限申请框架
-//    implementation project(path: ':lib_permission')
 
     /********************************** 三方库 **************************************/
     debugImplementation rootProject.ext.dependencies.leakcanary

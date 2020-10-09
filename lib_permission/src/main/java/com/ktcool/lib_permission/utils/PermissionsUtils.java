@@ -14,7 +14,11 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.ktcool.lib_permission.IPermission;
+import com.ktcool.lib_permission.annotation.PermissionDenied;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -131,6 +135,49 @@ public class PermissionsUtils {
         if (mPermissionDialog != null) {
             mPermissionDialog.cancel();
             mPermissionDialog = null;
+        }
+
+    }
+
+    /**
+     * 通过反射调用指定注解方法
+     *
+     * @param obj             注解方法所在类
+     * @param annotationClazz 注解类名
+     * @param requestCode     requestCode
+     */
+    public void invokeAnnotationMethod(Object obj, Class<? extends Annotation> annotationClazz, int requestCode) {
+        Class<?> objClass = obj.getClass();
+        Method[] methods = objClass.getDeclaredMethods();
+        if (methods.length <= 0) {
+            return;
+        }
+
+        for (Method method : methods) {
+            //根据是否有指定注解过滤
+            boolean annotationPresent = method.isAnnotationPresent(annotationClazz);
+            if (annotationPresent) {
+                method.setAccessible(true);
+                //获取方法参数类型
+                Class<?>[] parameterTypes = method.getParameterTypes();
+                //获取方法上的注解
+                PermissionDenied annotation = (PermissionDenied) method.getAnnotation(annotationClazz);
+                if (annotation == null) {
+                    return;
+                }
+
+                try {
+                    if (parameterTypes.length == 1) {
+                        method.invoke(obj, requestCode);
+                    } else {
+                        method.invoke(obj);
+                    }
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
     }

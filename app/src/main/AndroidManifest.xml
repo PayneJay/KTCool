@@ -4,6 +4,9 @@
     package="com.ktcool">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR"/>
+    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
 
     <application
         android:name=".CoolApplication"
@@ -23,9 +26,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".module_search.SecondActivity" />
-        <activity android:name=".module_search.ThirdActivity" />
-        <activity android:name=".test.TestActivity" />
 
         <provider
             android:name=".test.InstallerProvider"

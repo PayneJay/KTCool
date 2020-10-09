@@ -1,9 +1,7 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-aspectjx'
 apply from: rootDir.absolutePath + '/build_properties/modules.gradle'
 
 android {
-
     defaultConfig {
         applicationId rootProject.ext.android.applicationId
     }
@@ -38,4 +36,7 @@ dependencies {
         implementation project(path: ':module_mine')
         implementation project(path: ':module_search')
     }
+
+    //权限申请框架
+    implementation project(path: ':lib_permission')
 }

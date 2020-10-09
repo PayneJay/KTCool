@@ -3,7 +3,9 @@
     package="com.ktcool.lib_permission">
 
     <application>
-        <activity android:name=".PermissionRequestActivity"></activity>
+        <activity
+            android:name=".PermissionRequestActivity"
+            android:theme="@style/Transparent" />
     </application>
 
 </manifest>
