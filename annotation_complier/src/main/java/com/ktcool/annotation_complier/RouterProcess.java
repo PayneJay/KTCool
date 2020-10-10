@@ -23,8 +23,6 @@ import javax.tools.JavaFileObject;
 
 @AutoService(Processor.class)//这个注解是用来注册
 public class RouterProcess extends AbstractProcessor {
-    private static final String CREATE_CLASS_NAME = "RouterUtil";
-    private static final String CREATE_PACKAGE_NAME = "com.ktcool.common.router.util";
     //存储路由地址和对应Element的映射表
     private Map<String, TypeElement> routerMap = new HashMap<>();
     //用来创建文件

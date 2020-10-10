@@ -1,3 +1,4 @@
+include ':lib_permission'
 include ':annotation_complier'
 include ':annotation'
 include ':module_mine'

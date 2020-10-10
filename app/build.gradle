@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply from: rootDir.absolutePath + '/build_properties/modules.gradle'
 
 android {
-
     defaultConfig {
         applicationId rootProject.ext.android.applicationId
     }
