@@ -4,10 +4,6 @@
 apply from: rootDir.absolutePath + '/build_properties/common.gradle'
 apply plugin: 'android-aspectjx'
 
-android {
-
-}
-
 aspectjx {
     enabled true
     /**
