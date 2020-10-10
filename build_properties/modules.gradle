@@ -1,8 +1,24 @@
 /**
  * 子模块通用gradle配置
  */
-apply plugin: 'android-aspectjx'
 apply from: rootDir.absolutePath + '/build_properties/common.gradle'
+apply plugin: 'android-aspectjx'
+
+android {
+
+}
+
+aspectjx {
+    enabled true
+    /**
+     * 这两个issues真的太关键了，整了一天都快哭了😭
+     * https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx/issues/287
+     * aspectjx和leakcanary同时使用会有问题，具体查看下面👇
+     * https://github.com/square/leakcanary/issues/1157
+     */
+    exclude 'versions.9', 'androidx', 'com.google', 'com.taobao', 'com.squareup.leakcanary'
+}
+
 dependencies {
     implementation project(path: ':common')
     //权限申请框架

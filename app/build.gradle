@@ -36,7 +36,4 @@ dependencies {
         implementation project(path: ':module_mine')
         implementation project(path: ':module_search')
     }
-
-    //权限申请框架
-    implementation project(path: ':lib_permission')
 }

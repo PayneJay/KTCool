@@ -17,6 +17,7 @@ import com.ktcool.lib_permission.IPermission;
 import com.ktcool.lib_permission.annotation.PermissionDenied;
 
 import java.lang.annotation.Annotation;
+import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -30,11 +31,12 @@ public class PermissionsUtils {
      */
     private AlertDialog mPermissionDialog;
 
-    private PermissionsUtils() {
-    }
-
     private static PermissionsUtils permissionsUtils;
     private IPermission mPermissionsResult;
+    private WeakReference<Activity> mWeakRefContext;
+
+    private PermissionsUtils() {
+    }
 
     public static PermissionsUtils getInstance() {
         if (permissionsUtils == null) {
@@ -45,9 +47,9 @@ public class PermissionsUtils {
 
     public void checkPermissions(Activity context, String[] permissions, @NonNull IPermission permissionsResult) {
         mPermissionsResult = permissionsResult;
-
+        mWeakRefContext = new WeakReference<>(context);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {//6.0才用动态权限
-            permissionsResult.permissionGranted();
+            grantedFinish();
             return;
         }
 
@@ -65,7 +67,7 @@ public class PermissionsUtils {
             ActivityCompat.requestPermissions(context, permissions, mRequestCode);
         } else {
             //说明权限都已经通过
-            permissionsResult.permissionGranted();
+            grantedFinish();
         }
     }
 
@@ -76,6 +78,7 @@ public class PermissionsUtils {
 
     public void onRequestPermissionsResult(Activity context, int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
+        mWeakRefContext = new WeakReference<>(context);
         boolean hasPermissionDismiss = false;//有权限没有通过
         if (mRequestCode == requestCode) {
             for (int grantResult : grantResults) {
@@ -89,11 +92,11 @@ public class PermissionsUtils {
                 if (showSystemSetting) {
                     showSystemPermissionsSettingDialog(context, permissions);//跳转到系统设置权限页面，或者直接关闭页面，不让他继续访问
                 } else {
-                    mPermissionsResult.permissionDenied(requestCode, permissions);
+                    deniedFinish(permissions);
                 }
             } else {
                 //全部权限通过，可以进行下一步操作。。。
-                mPermissionsResult.permissionGranted();
+                grantedFinish();
             }
         }
 
@@ -121,8 +124,7 @@ public class PermissionsUtils {
                         public void onClick(DialogInterface dialog, int which) {
                             //关闭页面或者做其他操作
                             cancelPermissionDialog();
-                            //mContext.finish();
-                            mPermissionsResult.permissionDenied(mRequestCode, permissions);
+                            deniedFinish(permissions);
                         }
                     })
                     .create();
@@ -137,6 +139,28 @@ public class PermissionsUtils {
             mPermissionDialog = null;
         }
 
+    }
+
+    /**
+     * 权限请求拒绝关闭申请activity
+     */
+    private void deniedFinish(@NonNull String[] permissions) {
+        mPermissionsResult.permissionDenied(mRequestCode, permissions);
+        Activity activity = mWeakRefContext.get();
+        if (activity != null) {
+            activity.finish();
+        }
+    }
+
+    /**
+     * 权限请求成功关闭申请activity
+     */
+    private void grantedFinish() {
+        mPermissionsResult.permissionGranted();
+        Activity activity = mWeakRefContext.get();
+        if (activity != null) {
+            activity.finish();
+        }
     }
 
     /**

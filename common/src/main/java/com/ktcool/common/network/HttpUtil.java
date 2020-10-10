@@ -1,5 +1,7 @@
 package com.ktcool.common.network;
 
+import android.annotation.SuppressLint;
+
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -17,12 +19,14 @@ public class HttpUtil {
     public static SSLSocketFactory getSSLSocketFactory() {
         //创建一个不验证证书链的证书信任管理器。
         final TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
+            @SuppressLint("TrustAllX509TrustManager")
             @Override
             public void checkClientTrusted(
                     java.security.cert.X509Certificate[] chain,
                     String authType) {
             }
 
+            @SuppressLint("TrustAllX509TrustManager")
             @Override
             public void checkServerTrusted(
                     java.security.cert.X509Certificate[] chain,
