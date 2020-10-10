@@ -1,0 +1,45 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml:2:1-11:12
+INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml:2:1-11:12
+INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml:2:1-11:12
+INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml:2:1-11:12
+INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml:2:1-11:12
+INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml:2:1-11:12
+INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml:2:1-11:12
+	package
+		ADDED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml:3:5-40
+		INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml
+		INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml
+		ADDED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml:2:1-11:12
+		INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml
+		ADDED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml:2:1-11:12
+		INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml:5:5-9:19
+activity#com.ktcool.lib_permission.PermissionRequestActivity
+ADDED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml:6:9-8:50
+	android:theme
+		ADDED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml:8:13-47
+	android:name
+		ADDED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml:7:13-54
+uses-sdk
+INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml
+INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml
+INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml
+INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml
+		ADDED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml
+		INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml
+		ADDED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml
+		INJECTED from /Users/weipengjie/Projects/Android/KTCool/lib_permission/src/main/AndroidManifest.xml
