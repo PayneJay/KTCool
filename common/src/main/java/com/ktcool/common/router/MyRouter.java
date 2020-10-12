@@ -19,9 +19,9 @@ public class MyRouter {
     private WeakReference<Context> contextWeakRef;
 
     public static MyRouter getInstance() {
-        if (instance == null) {
+        if (instance == null) {//这一层的判空是为了防止下面重复加锁
             synchronized (MyRouter.class) {
-                if (instance == null) {
+                if (instance == null) {//这一层的判空是为了防止重复构建实例
                     instance = new MyRouter();
                 }
             }

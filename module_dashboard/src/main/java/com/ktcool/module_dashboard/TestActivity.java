@@ -33,7 +33,7 @@ public class TestActivity extends AppCompatActivity {
     }
 
     private void netRequest() {
-        HttpPoxy.getInstance().get("http://m.data.mob.com/v2/cconf?appkey=198a4d42a5e&plat=1&apppkg=com.tuicool.activity&appver=3.3.1&networktype=wifi&duid=de0123fce7e7b758931e4361035feb08c365a5bb", null, new ICallback<TestBean>() {
+        HttpPoxy.getInstance().get("https://mock.yonyoucloud.com/mock/15814/leather/resources", null, new ICallback<TestBean>() {
             @Override
             public void onSuccess(TestBean response) {
                 MyPrint.Companion.print("onSuccess : " + response.toString());
