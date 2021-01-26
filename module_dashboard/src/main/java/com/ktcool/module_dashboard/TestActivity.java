@@ -47,7 +47,7 @@ public class TestActivity extends AppCompatActivity {
     }
 
     @PermissionNeed(value = {Manifest.permission.CAMERA, Manifest.permission.READ_CALENDAR,
-            Manifest.permission.WRITE_CALENDAR}, requestCode = 100)
+            Manifest.permission.ACCESS_WIFI_STATE}, requestCode = 100)
     public void permissionRequest() {
         MyPrint.Companion.print("permissionRequest : 权限申请通过");
     }

@@ -2,6 +2,7 @@
 apply from: 'build_properties/config.gradle'
 
 buildscript {
+    ext.kotlin_version = '1.4.30-RC'
     ext.kotlin_version = "1.4.0"
     repositories {
         maven {
@@ -12,7 +13,7 @@ buildscript {
         maven { url 'https://jitpack.io' }
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.0.1"
+        classpath "com.android.tools.build:gradle:4.1.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         //AOP
         classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.10'

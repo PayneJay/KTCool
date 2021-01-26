@@ -1,0 +1,7 @@
+apply plugin: 'com.android.library'
+apply from: rootDir.absolutePath + '/build_properties/lib.gradle'
+
+dependencies {
+    implementation rootProject.ext.dependencies.appcompat
+    implementation rootProject.ext.dependencies.constraint_layout
+}

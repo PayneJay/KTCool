@@ -1,9 +1,12 @@
 package com.ktcool.module_search
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.snail.base.BaseActivity
 
-class SearchActivity : AppCompatActivity() {
+/**
+ * 搜索页
+ */
+class SearchActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

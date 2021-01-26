@@ -1,3 +1,4 @@
+include ':base'
 include ':lib_permission'
 include ':annotation_complier'
 include ':annotation'

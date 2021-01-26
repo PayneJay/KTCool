@@ -40,26 +40,36 @@ public class HttpPoxy implements IHttp {
 
     @Override
     public <T extends BaseBean> void get(String url, Map<String, String> params, ICallback<T> iCallback, Class<T> clazz) {
-        mHttp.get(url, params, iCallback, clazz);
+        if (mHttp != null) {
+            mHttp.get(url, params, iCallback, clazz);
+        }
     }
 
     @Override
     public <T extends BaseBean> void post(String url, String params, ICallback<T> iCallback, Class<T> clazz) {
-        mHttp.post(url, params, iCallback, clazz);
+        if (mHttp != null) {
+            mHttp.post(url, params, iCallback, clazz);
+        }
     }
 
     @Override
     public <T extends BaseBean> void put(String url, String params, ICallback<T> iCallback, Class<T> clazz) {
-        mHttp.put(url, params, iCallback, clazz);
+        if (mHttp != null) {
+            mHttp.put(url, params, iCallback, clazz);
+        }
     }
 
     @Override
     public <T extends BaseBean> void delete(String url, String params, ICallback<T> iCallback, Class<T> clazz) {
-        mHttp.delete(url, params, iCallback, clazz);
+        if (mHttp != null) {
+            mHttp.delete(url, params, iCallback, clazz);
+        }
     }
 
     @Override
     public <T extends BaseBean> void patch(String url, String params, ICallback<T> iCallback, Class<T> clazz) {
-        mHttp.patch(url, params, iCallback, clazz);
+        if (mHttp != null) {
+            mHttp.patch(url, params, iCallback, clazz);
+        }
     }
 }

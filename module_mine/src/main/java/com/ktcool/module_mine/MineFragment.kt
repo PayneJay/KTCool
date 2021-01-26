@@ -5,13 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.ktcool.common.constant.RouterMap
 import com.ktcool.common.router.MyRouter
+import com.snail.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_mine.*
 
-class MineFragment : Fragment() {
+/**
+ * 我的Fragment
+ */
+class MineFragment : BaseFragment() {
 
     private lateinit var mineViewModel: MineViewModel
 

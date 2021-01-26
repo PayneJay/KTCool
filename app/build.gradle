@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply from: rootDir.absolutePath + '/build_properties/modules.gradle'
 
 android {
@@ -36,4 +37,9 @@ dependencies {
         implementation project(path: ':module_mine')
         implementation project(path: ':module_search')
     }
+    implementation rootProject.ext.dependencies.kotlin_version
+    implementation rootProject.ext.dependencies.core_ktx
+}
+repositories {
+    mavenCentral()
 }

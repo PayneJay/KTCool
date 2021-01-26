@@ -6,14 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.ktcool.common.constant.RouterMap
 import com.ktcool.common.router.MyRouter
+import com.snail.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment() {
+/**
+ * 首页Fragment
+ */
+class HomeFragment : BaseFragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private var textView: TextView? = null

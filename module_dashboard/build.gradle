@@ -4,6 +4,7 @@ if (rootProject.ext.moduleDashboard) {
     apply plugin: 'com.android.application'
 }
 apply from: rootDir.absolutePath + '/build_properties/modules.gradle'
+apply plugin: 'kotlin-android'
 
 android {
     defaultConfig {

@@ -16,9 +16,9 @@ object ClassUtils {
             val list = pathListField[loader]
             val dexElementsField = field("dalvik.system.DexPathList", "dexElements")
             val dexElements = dexElementsField[list] as Array<*>
-            val dexFilefield = field("dalvik.system.DexPathList\$Element", "dexFile")
+            val dexFileField = field("dalvik.system.DexPathList\$Element", "dexFile")
             for (dex in dexElements) {
-                val dexFile = dexFilefield[dex] as DexFile
+                val dexFile = dexFileField[dex] as DexFile
                 dexFiles.add(dexFile)
             }
         } catch (e: ClassNotFoundException) {
@@ -49,8 +49,8 @@ object ClassUtils {
     fun getFileNameByPackageName(context: Context, packageName: String?): Set<String>? {
         val classNames: MutableSet<String> = HashSet()
         val dexFiles = getDexFiles(context)
-        for (dexfile in dexFiles) {
-            val dexEntries = dexfile.entries()
+        for (dexFile in dexFiles) {
+            val dexEntries = dexFile.entries()
             while (dexEntries.hasMoreElements()) {
                 val className = dexEntries.nextElement()
                 if (className.startsWith(packageName!!)) {

@@ -1,9 +1,12 @@
 package com.ktcool.module_mine
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.snail.base.BaseActivity
 
-class NotificationActivity : AppCompatActivity() {
+/**
+ * 通知管理页
+ */
+class NotificationActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

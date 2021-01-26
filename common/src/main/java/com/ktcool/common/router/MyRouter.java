@@ -12,10 +12,10 @@ import java.util.Set;
 
 public class MyRouter {
     private volatile static MyRouter instance;
-    private Map<String, Class<?>> routerMap = new HashMap<>();
-    private Map<String, String> stringParams = new HashMap<>();
-    private Map<String, Integer> intParams = new HashMap<>();
-    private Map<String, Boolean> booleanParams = new HashMap<>();
+    private final Map<String, Class<?>> routerMap = new HashMap<>();
+    private final Map<String, String> stringParams = new HashMap<>();
+    private final Map<String, Integer> intParams = new HashMap<>();
+    private final Map<String, Boolean> booleanParams = new HashMap<>();
     private WeakReference<Context> contextWeakRef;
 
     public static MyRouter getInstance() {
@@ -97,6 +97,10 @@ public class MyRouter {
                     intent.putExtra(key, booleanParams.get(key));
                 }
             }
+            //用application的context启动Activity必须加这一句,否则抛异常
+            //android.util.AndroidRuntimeException: Calling startActivity() from outside of an Activity
+            //context requires the FLAG_ACTIVITY_NEW_TASK flag. Is this really what you want?
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         }
     }

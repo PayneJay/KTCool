@@ -1,6 +1,7 @@
 package com.ktcool.lib_permission;
 
 import android.app.Activity;
+import android.util.Log;
 
 import androidx.fragment.app.Fragment;
 
@@ -53,6 +54,6 @@ public class PermissionAspect {
     }
 
     private void printLog(String s) {
-        System.out.println("Leather Log :" + s);
+        Log.d("Leather", " Log :" + s);
     }
 }

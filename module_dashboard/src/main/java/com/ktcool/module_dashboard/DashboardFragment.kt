@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -13,9 +12,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
+import com.snail.base.BaseFragment
 
-class DashboardFragment : Fragment() {
-    private var recyclerView: RecyclerView? = null
+/**
+ * DashboardFragment
+ */
+class DashboardFragment : BaseFragment() {
+    private lateinit var recyclerView: RecyclerView
     private var data: MutableList<DashboardItemBean> = ArrayList()
 
     private lateinit var dashboardViewModel: DashboardViewModel
@@ -55,16 +58,16 @@ class DashboardFragment : Fragment() {
             }
 
         //设置recyclerView的配置
-        recyclerView?.itemAnimator = DefaultItemAnimator()
-        recyclerView?.layoutManager = LinearLayoutManager(activity)
-        recyclerView?.addItemDecoration(
+        recyclerView.itemAnimator = DefaultItemAnimator()
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.addItemDecoration(
             DividerItemDecoration(
                 activity,
                 DividerItemDecoration.VERTICAL
             )
         )
         data = MutableList(20) { i -> DashboardItemBean("这个是第${i}个条目", "") }
-        recyclerView?.adapter = DashboardAdapter(data)
+        recyclerView.adapter = DashboardAdapter(data)
 
     }
 }

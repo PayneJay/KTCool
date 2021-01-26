@@ -1,11 +1,7 @@
 package com.ktcool.module_login.ui.login
 
 import android.app.Activity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -14,13 +10,19 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.annotation.StringRes
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.ktcool.annotation.Router
-
-import com.ktcool.module_login.R
 import com.ktcool.common.constant.RouterMap
+import com.ktcool.module_login.R
+import com.snail.base.BaseActivity
 
+/**
+ * 登录页
+ */
 @Router(path = RouterMap.LOGIN_ACTIVITY)
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
 

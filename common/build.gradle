@@ -1,2 +1,11 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 apply from: rootDir.absolutePath + '/build_properties/common.gradle'
+dependencies {
+    implementation rootProject.ext.dependencies.core_ktx
+    implementation rootProject.ext.dependencies.kotlin_version
+    api project(path: ':base')
+}
+repositories {
+    mavenCentral()
+}
