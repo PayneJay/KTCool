@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.ktcool.common.constant.RouterMap
@@ -19,8 +17,6 @@ import kotlinx.android.synthetic.main.fragment_home.*
 class HomeFragment : BaseFragment() {
 
     private lateinit var homeViewModel: HomeViewModel
-    private var textView: TextView? = null
-    private var btnJump: Button? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,20 +25,7 @@ class HomeFragment : BaseFragment() {
     ): View? {
         homeViewModel =
             ViewModelProvider.NewInstanceFactory().create(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        textView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView?.text = it
-        })
-        btnJump = root.findViewById(R.id.btn_home_jump)
-        btnJump?.setOnClickListener {
-            MyRouter.getInstance()
-                .withString("String", "Hello World!")
-                .withInt("Integer", 24)
-                .withBool("Boolean", true)
-                .navigation(RouterMap.SECOND_ACTIVITY)
-        }
-        return root
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,6 +33,18 @@ class HomeFragment : BaseFragment() {
         text_home.setOnClickListener {
             MyRouter.getInstance().navigation(RouterMap.LOGIN_ACTIVITY)
         }
+
+        btn_home_jump.setOnClickListener {
+            MyRouter.getInstance()
+                .withString("String", "Hello World!")
+                .withInt("Integer", 24)
+                .withBool("Boolean", true)
+                .navigation(RouterMap.SECOND_ACTIVITY)
+        }
+
+        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+            text_home.text = it
+        })
     }
 
 }

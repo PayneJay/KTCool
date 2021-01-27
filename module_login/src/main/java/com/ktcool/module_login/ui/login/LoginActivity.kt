@@ -12,7 +12,6 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.ktcool.annotation.Router
 import com.ktcool.common.constant.RouterMap
 import com.ktcool.module_login.R
@@ -36,8 +35,7 @@ class LoginActivity : BaseActivity() {
         val login = findViewById<Button>(R.id.login)
         val loading = findViewById<ProgressBar>(R.id.loading)
 
-        loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
-            .get(LoginViewModel::class.java)
+        loginViewModel = LoginViewModelFactory().create(LoginViewModel::class.java)
 
         loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
             val loginState = it ?: return@Observer

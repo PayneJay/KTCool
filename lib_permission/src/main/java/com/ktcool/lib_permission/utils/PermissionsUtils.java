@@ -45,6 +45,11 @@ public class PermissionsUtils {
         return permissionsUtils;
     }
 
+    public void release(){
+        //初衷是解决内存泄漏
+        permissionsUtils = null;
+    }
+
     public void checkPermissions(Activity context, String[] permissions, @NonNull IPermission permissionsResult) {
         mPermissionsResult = permissionsResult;
         mWeakRefContext = new WeakReference<>(context);

@@ -1,14 +1,14 @@
 package com.ktcool
 
-import android.app.Application
 import android.content.Context
 import com.ktcool.common.network.HttpPoxy
 import com.ktcool.common.network.OKHttpMode
 import com.ktcool.common.router.MyRouter
 import com.ktcool.common.utils.MyPrint
+import com.snail.base.BaseApplication
 
 
-class CoolApplication : Application() {
+class CoolApplication : BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()

@@ -22,6 +22,7 @@ public class PermissionRequestActivity extends AppCompatActivity {
      * @param context     上下文
      * @param permissions 权限数组
      * @param requestCode 请求code
+     * @param iPermission 请求权限回调
      */
     public static void startPermissionActivity(Context context, String[] permissions, int requestCode, IPermission iPermission) {
         mIPermission = iPermission;
@@ -52,5 +53,12 @@ public class PermissionRequestActivity extends AppCompatActivity {
                                            @androidx.annotation.NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         PermissionsUtils.getInstance().onRequestPermissionsResult(this, requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mIPermission = null;
+        PermissionsUtils.getInstance().release();
     }
 }

@@ -5,7 +5,7 @@ import android.util.Log
 class MyPrint {
     companion object {
         fun print(msg: Any?) {
-            Log.i("Leather", " Log : ${msg.toString()}")
+            LogUtil.i("Leather Log : ${msg.toString()}")
         }
     }
 }
