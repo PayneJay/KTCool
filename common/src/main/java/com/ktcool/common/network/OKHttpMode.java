@@ -66,6 +66,7 @@ public class OKHttpMode implements IHttp {
                     .sslSocketFactory(sslSocketFactory, trustManager)
                     .connectTimeout(30, TimeUnit.SECONDS)
                     .readTimeout(10, TimeUnit.SECONDS)
+                    .dns(new HttpDNS())
                     .build();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();

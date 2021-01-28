@@ -5,6 +5,7 @@ import dalvik.system.BaseDexClassLoader
 import dalvik.system.DexFile
 import java.lang.reflect.Field
 import java.util.*
+import kotlin.jvm.Throws
 
 object ClassUtils {
     //经过BaseDexClassLoader反射获取app全部的DexFile
